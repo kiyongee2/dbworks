@@ -43,6 +43,7 @@ INSERT INTO customer VALUES (2, '김연아', '대한민국 서울', '000-6000-0001');
 INSERT INTO customer VALUES (3, '안산', '대한민국 광주광역시', '000-7000-0001');
 INSERT INTO customer VALUES (4, '류현진', '미국 토론토', NULL);
 INSERT INTO customer VALUES (5, '손흥민', '영국 토트넘', '000-8000-0001');
+INSERT INTO customer VALUES (6, '박세리', '대한민국 대전', '000-9000-0001');
 
 -- orders 자료 삽입
 INSERT INTO orders VALUES(1, 1, 1, 6000, TO_DATE('2018-07-01', 'YYYY-MM-DD'));
@@ -64,6 +65,8 @@ SELECT * FROM orders;
 SELECT orderid, custid, bookid, saleprice,
     TO_CHAR(orderdate, 'YYYY-MM-DD') AS orderdate 
 FROM orders;
+
+COMMIT;
 
 
 

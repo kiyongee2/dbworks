@@ -1,6 +1,7 @@
 -- 서브쿼리(부속 질의)
 -- WHERE 절에서 사용
 -- 가장 비싼 도서의 이름을 검색하시오
+-- 조건의 결과 1개 : 단일 행
 SELECT bookname, price
 FROM book
 WHERE price = (SELECT MAX(price)
@@ -32,7 +33,7 @@ WHERE custid IN (SELECT custid
 -- 튜플 변수 : 테이블의 이름의 별칭
 -- 자체 조인 : 자체 조인은 하나의 테이블에 여러 별명을 붙여서 마치 
            --서로 다른 테이블인 것처럼 조인한다.
-SELECT b1.bookname
+SELECT b1.bookname, b1.price
 FROM book b1
 WHERE b1.price > (SELECT AVG(b2.price)
                   FROM book b2
