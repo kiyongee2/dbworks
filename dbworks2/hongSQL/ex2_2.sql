@@ -1,0 +1,14 @@
+-- ex2_2 테이블 --
+CREATE TABLE ex2_2(
+    col_date    DATE,
+    col_timestamp   TIMESTAMP
+);
+
+-- 날짜 데이터 비교
+INSERT INTO ex2_2 VALUES (SYSDATE, SYSTIMESTAMP);
+-- SYS+DATE
+
+INSERT INTO ex2_2 VALUES (SYSDATE, SYSTIMESTAMP);
+
+SELECT * FROM ex2_2;
+

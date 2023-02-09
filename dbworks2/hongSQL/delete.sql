@@ -1,0 +1,15 @@
+-- DELETE ±¸¹® --
+
+CREATE TABLE ex3_3(
+    employee_id NUMBER
+);
+
+INSERT INTO ex3_3 VALUES (100);
+
+SELECT * FROM ex3_3;
+
+COMMIT;
+
+DELETE FROM ex3_3;
+
+COMMIT;

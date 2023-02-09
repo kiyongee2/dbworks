@@ -1,0 +1,14 @@
+
+-- COUNTRIES 테이블 검색하기 --
+SELECT * FROM countries;
+
+-- 특정 열 검색 --
+SELECT COUNTRY_ID, COUNTRY_NAME FROM countries;
+
+SELECT COUNTRY_NAME FROM countries WHERE REGION_ID = 3;
+
+
+
+
+
+INSERT INTO COUNTRIES VALUES ('KO', 'Korea', 3);

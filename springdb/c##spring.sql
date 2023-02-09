@@ -1,0 +1,17 @@
+-- c##spring 데이터베이스 생성
+-- DB이름, 비밀번호, 테이블 공간 생성
+CREATE USER c##spring IDENTIFIED BY spring
+DEFAULT TABLESPACE USERS 
+TEMPORARY TABLESPACE TEMP;
+
+-- 권한 설정
+GRANT CONNECT, DBA TO c##spring;
+
+-- USER 보기
+SHOW USER;
+
+-- 오라클 포트 변경 : 8080인 경우 변경
+SELECT DBMS_XDB.GETHTTPPORT() FROM DUAL;
+
+EXEC DBMS_XDB.GETHTTPPORT(9090);
+

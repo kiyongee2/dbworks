@@ -1,0 +1,14 @@
+-- account 테이블 생성
+CREATE TABLE account(
+    ano     VARCHAR2(20) PRIMARY KEY,
+    owner   VARCHAR2(20) NOT NULL,
+    balance NUMBER
+);
+
+INSERT INTO account VALUES ('111-222-3333', '김기용', 10000);
+
+SELECT * FROM account;
+
+COMMIT;
+
+DROP TABLE account;
