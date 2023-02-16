@@ -46,3 +46,5 @@ DROP TABLE entertainer;
 DROP TABLE site;
 DROP TABLE agency;
 DROP SEQUENCE seq_enter;
+
+COMMIT;
