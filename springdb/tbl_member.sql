@@ -32,18 +32,21 @@ SELECT mem.userid, userpw, username, enabled, regdate, updatedate, auth
 FROM tbl_member mem 
     LEFT OUTER JOIN tbl_member_auth auth 
     on mem.userid = auth.userid 
-WHERE mem.userid = 'cloud'; 
+WHERE mem.userid = 'admin90'; 
 
-SELECT mem.userid, mem.userpw,mem.username, mem.regdate, auth.auth
+SELECT mem.userid, mem.userpw, mem.username, mem.regdate, auth.auth
 FROM tbl_member mem, tbl_member_auth auth
 WHERE mem.userid = auth.userid;
 
 -- 관리자로 등급 변경
 UPDATE tbl_member_auth SET auth = 'ROLE_ADMIN' WHERE userid='admin';
 
-SELECT * FROM tbl_member ORDER BY regdate DESC;
+SELECT * FROM tbl_member;
 SELECT * FROM tbl_member_auth;
 SELECT * FROM persistent_logins;
+
+SELECT userid, userpw, enabled FROM tbl_member WHERE userid='admin99';
+SELECT userid, auth FROM tbl_member_auth WHERE userid='admin99';
 
 SELECT COUNT(*) 
 FROM tbl_member
