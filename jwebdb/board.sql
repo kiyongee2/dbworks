@@ -19,9 +19,6 @@ CREATE TABLE board(
 -- 시퀀스 : 자동 순번
 CREATE SEQUENCE seq;
 
--- 회원 추가
-INSERT INTO t_user VALUES ('admin', 'admin1234', '관리자', 'Admin');
-
 -- 게시글 추가
 INSERT INTO board(bno, title, writer, content)
 VALUES (seq.NEXTVAL, '가입인사', '관리자', '잘 부탁드립니다...');
