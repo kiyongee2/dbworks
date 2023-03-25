@@ -55,6 +55,7 @@ COMMIT;
 -- EQUI JOIN : PRODUCT와 PRODUCT_REVIEW
 SELECT a.product_code,
        a.product_name,
+       a.price,
        b.member_id,
        b.content,
        b.regdate
@@ -78,13 +79,13 @@ SELECT a.product_code,
 FROM product a INNER JOIN product_review b
     ON a.product_code = b.product_code;
     
--- LEFT OUTER JOIN
+-- LEFT OUTER JOIN : OUTER 생략 가능
 SELECT a.product_code,
        a.product_name,
        b.member_id,
        b.content,
        b.regdate
-FROM product a LEFT OUTER JOIN product_review b
+FROM product a LEFT JOIN product_review b
     ON a.product_code = b.product_code;
     
 -- RIGHT OUTER JOIN
@@ -101,10 +102,36 @@ FROM product_review a RIGHT OUTER JOIN product b
 SELECT re.product_code,
        (SELECT pr.product_name 
             FROM product pr
-            WHERE pr.product_code = re.product_code) as product_name,
+        WHERE pr.product_code = re.product_code) as product_name,
        re.member_id,
        re.content
 FROM product_review re;
+
+-- 스칼라 서브쿼리를 이용하여 PRODUCT_REVIEW 테이블에 존재하지 않는
+-- PRODUCT_NAME, PRICE 데이터 출력
+SELECT re.product_code,
+       (SELECT pr.product_name 
+            FROM product pr
+        WHERE pr.product_code = re.product_code) as product_name,
+        (SELECT pr.price 
+            FROM product pr
+        WHERE pr.product_code = re.product_code) as price,
+       re.member_id,
+       re.content
+FROM product_review re;
+
+-- 인라인 뷰(Inline View)
+SELECT R.PRODUCT_CODE,
+       P.PRODUCT_NAME,
+       P.PRICE,
+       R.MEMBER_ID,
+       R.CONTENT
+FROM PRODUCT_REVIEW R,
+    (SELECT PRODUCT_CODE,
+            PRODUCT_NAME,
+            PRICE
+      FROM  PRODUCT) P
+WHERE R.PRODUCT_CODE = P.PRODUCT_CODE;
 
 DROP TABLE product;
 DROP TABLE product_review;

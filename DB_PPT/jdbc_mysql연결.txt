@@ -1,0 +1,13 @@
+-- jdbc: oracle
+driverClass =  "oracle.jdbc.OracleDriver"
+url = "jdbc:oracle:thin:@localhost:1521:xe";
+username = "c##jweb"
+password = "12345"
+
+-- jdbc: mysql
+driverClass =  "com.mysql.cj.jdbc.Driver"
+url = "jdbc:mysql://localhost:3306/javaweb"
+username = "jweb"
+password = "045901"
+
+에러 날경우 - javaweb?useUnicode=true&serverTimezone=Asia/Seoul";

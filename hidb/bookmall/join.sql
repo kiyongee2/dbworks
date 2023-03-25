@@ -30,6 +30,12 @@ FROM customer, orders
 WHERE customer.custid = orders.custid
 GROUP BY customer.name;
 
+-- INNER JOIN
+SELECT cus.name, ord.saleprice
+FROM customer cus INNER JOIN orders ord
+     ON cus.custid = ord.custid
+     ORDER BY cus.name;
+
 -- 고객별로 주문한 모든 도서의 총 판매액을 구하고, 고객별로 정렬하시오
 -- 총 판매액이 30000원 이상인 내역
 SELECT customer.name, SUM(saleprice)
@@ -60,13 +66,14 @@ WHERE c.custid = o.custid
     
 -- 도서를 구매하지 않은 고객을 포함하여 
 -- 고객의 이름과 고객이 주문한 도서의 판매가격을 구하시오
---SELECT customer.name, orders.saleprice
---FROM customer LEFT OUTER JOIN orders
---        ON customer.custid = orders.custid;
-
 SELECT cus.name, ord.saleprice
 FROM customer cus LEFT OUTER JOIN orders ord
      ON cus.custid = ord.custid;
+     
+SELECT cus.name, ord.saleprice
+  FROM customer cus, orders ord
+WHERE cus.custid = ord.custid(+);
+
 
 
 
