@@ -37,6 +37,39 @@ SELECT empname,
        DENSE_RANK() OVER(ORDER BY salary DESC) 급여_DENSE_RANK
 FROM employee;
 
+SELECT * FROM employee;
+
+-- DECODE(칼럼, 조건, 참, 거짓)
+SELECT empname,
+        DECODE(gender, '남자', 'M', 'F') gender
+FROM employee;
+/*
+   CASE 
+     WHEN 조건 THEN 결과1
+     WHEN 조건 THEN 결과2
+     ELSE 결과3
+   END
+*/
+SELECT empname,
+       CASE
+        WHEN gender = '남자' THEN 'M'
+        ELSE 'F'
+       END AS gender
+FROM employee;
+
+SELECT empname, salary,
+      CASE
+        WHEN salary >= 3500000 THEN '과장'
+        WHEN salary >= 2500000 THEN '대리'
+        ELSE '사원'
+       END 급여기준
+FROM employee;
+
+SELECT empname, salary,
+        DECODE(salary, 3500000, '과장', 2500000, '대리', '사원') 급여기준
+FROM employee;
+
+
 
 
 

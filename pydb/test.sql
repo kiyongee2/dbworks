@@ -1,0 +1,6 @@
+CREATE TABLE test(
+	name TEXT NOT NULL,
+	age INTEGER
+);
+
+INSERT INTO test VALUES ('천선란', 29);

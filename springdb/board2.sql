@@ -65,6 +65,29 @@ FROM board
 WHERE bno > 0 AND ROWNUM <= 10; -- ROWNUM은 1을 포함해야 함
 
 -- 인라인 뷰(서브 쿼리) : 10개씩 출력(페이지 처리)
+-- 방법1
+SELECT *
+FROM 
+(
+    SELECT 
+        /*+ INDEX_DESC(board pk_board2) */ 
+        ROWNUM rn, bno, title, content
+    FROM board
+    WHERE bno > 0 AND ROWNUM <= 20
+)
+WHERE rn > 10;
+
+-- 방법2
+SELECT *
+FROM 
+(
+    SELECT 
+        /*+ INDEX_DESC(board pk_board2) */ 
+        ROWNUM rn, bno, title, content
+    FROM board
+)
+WHERE rn > 10 AND rn <= 20;
+
 SELECT *
 FROM 
 (
