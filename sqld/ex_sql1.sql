@@ -23,22 +23,83 @@ INSERT INTO JOB VALUES ('helper', 2500);
 
 SELECT * FROM JOB;
 
--- GROUP BY
-SELECT JOB_ID, SUM(SALARY), MAX(SALARY) SALARY
-FROM JOB
-GROUP BY JOB_ID;
+-- job 전체의 개수와 합계
+SELECT COUNT(*) 개수, SUM(salary) 급여총계
+FROM job;
 
--- UNION
-SELECT JOB_ID, MAX(SALARY) SALARY
-FROM JOB
-GROUP BY JOB_ID
+-- job_id 별 개수와 급여 총계
+SELECT job_id, COUNT(*) 개수, SUM(salary) 급여총계
+FROM job 
+GROUP BY job_id;
+
+-- job_id 별 급여 총계와 소계
+SELECT job_id, SUM(salary) salary
+FROM job 
+GROUP BY ROLLUP(job_id)
+ORDER BY job_id;
+
+-- job_id별 급여 최대값 구하기
+SELECT job_id, MAX(salary) 급여최대
+FROM job 
+GROUP BY job_id;
+
+-- job_id별 급여 최소값 구하기
+SELECT job_id, MIN(salary) 급여최소
+FROM job 
+GROUP BY job_id;
+
+-- 최대값, 최소값 더하기(합집합) - UNION
+SELECT job_id, MAX(salary) 급여최대
+FROM job 
+GROUP BY job_id
 UNION
-SELECT JOB_ID, MIN(SALARY) SALARY
-FROM JOB
-GROUP BY JOB_ID;
+SELECT job_id, MIN(salary) 급여최소
+FROM job 
+GROUP BY job_id;
+
+SELECT * FROM job;
 
 -- 테이블 이름 변경
 ALTER TABLE JOB RENAME TO T_JOB;
+
+CREATE TABLE A1(
+    COL1 NUMBER(3)
+);
+
+CREATE TABLE B1(
+    COL1 NUMBER(3)
+);
+
+CREATE TABLE C1(
+    COL1 NUMBER(3)
+);
+
+INSERT INTO A1 VALUES(1);
+INSERT INTO A1 VALUES(2);
+INSERT INTO A1 VALUES(3);
+INSERT INTO A1 VALUES(4);
+
+INSERT INTO B1 VALUES(3);
+INSERT INTO B1 VALUES(5);
+
+INSERT INTO C1 VALUES(4);
+INSERT INTO C1 VALUES(5);
+
+-- UNION
+SELECT * FROM A1
+UNION 
+SELECT * FROM B1;
+
+-- MINUS
+SELECT * FROM B1
+MINUS 
+SELECT * FROM C1;
+
+SELECT * FROM A1
+UNION 
+SELECT * FROM B1
+MINUS
+SELECT * FROM C1;
 
 -- LOLLUP, CUBE
 CREATE TABLE DEPT(
@@ -54,6 +115,15 @@ INSERT INTO DEPT VALUES ('200', '데이터분석가', 4000);
 INSERT INTO DEPT VALUES ('200', '관리자', 6000);
 
 SELECT * FROM DEPT;
+
+-- 부서 전체의 인원수와 급여 합계
+SELECT COUNT(*) 인원수, SUM(salary) 급여합계
+FROM dept;
+
+-- 부서별, 직업 이름별 인원수, 급여합계
+SELECT dept_no, job_nm, SUM(salary) 급여합계
+FROM dept
+GROUP BY dept_no, job_nm;
 
 -- LOLLUP() : DEPT_NO별 소계 및 전체 총계
 SELECT DEPT_NO, JOB_NM, SUM(SALARY) 
