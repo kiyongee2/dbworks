@@ -65,10 +65,6 @@ SELECT empname, salary,
        END 급여기준
 FROM employee;
 
-SELECT empname, salary,
-        DECODE(salary, 3500000, '과장', 2500000, '대리', '사원') 급여기준
-FROM employee;
-
 
 
 
