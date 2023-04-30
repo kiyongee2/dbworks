@@ -48,8 +48,8 @@ INSERT INTO board(bno, title, writer, content)
 -- ROWNUM 사용
 SELECT ROWNUM, bno, title, content
 FROM board
---WHERE ROWNUM > 0 AND ROWNUM <= 10;  
-WHERE ROWNUM > 11 AND ROWNUM <= 10;  -- ROWNUM은 1을 포함해야함
+WHERE ROWNUM > 0 AND ROWNUM <= 10;  
+--WHERE ROWNUM > 11 AND ROWNUM <= 10;  -- ROWNUM은 1을 포함해야함
 
 -- 인라인 뷰(서브 쿼리) : 10개씩 출력(페이지 처리)
 SELECT * 

@@ -1,0 +1,3 @@
+
+-- USER 비빌번호 변경
+ALTER USER system IDENTIFIED BY pw12345;
