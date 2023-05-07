@@ -24,12 +24,21 @@ FROM (
      ) b
 WHERE b.minsal = 1 OR b.maxsal = 1;
 
+-- 작성자가 관리자인 게시글 실행
 SELECT * FROM board WHERE writer = '관리자';
 
--- INDEX 생성
-CREATE INDEX idx_admin ON board(writer);
+-- INDEX 생성 : CREATE INDEX 인덱스명 ON 테이블명(칼럼명)
+--CREATE INDEX idx_admin ON board(writer);
+
+-- 힌트 사용해서 인덱스 실행 --
+SELECT /*+ INDEX(board idx_admin) */ * FROM board WHERE writer = '관리자';
+
+-- 제목이 '가입인사'인 게시글 실행
+SELECT * FROM board WHERE title = '가입인사';
+
+CREATE INDEX idx_title ON board(title);
 
 -- INDEX 삭제
-DROP INDEX idx_admin;
+DROP INDEX admin_idx;
 
 SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY_CURSOR(null, null, 'ALLSTATS LAST'));
