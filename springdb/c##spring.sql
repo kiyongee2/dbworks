@@ -1,6 +1,6 @@
 -- c##spring 데이터베이스 생성
 -- DB이름, 비밀번호, 테이블 공간 생성
-CREATE USER c##spring IDENTIFIED BY spring
+CREATE USER c##spring IDENTIFIED BY pwspring
 DEFAULT TABLESPACE USERS 
 TEMPORARY TABLESPACE TEMP;
 

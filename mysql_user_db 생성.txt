@@ -1,0 +1,19 @@
+mysql workbench 사용
+
+1. root 계정 system에 접속, 비밀번호(설치시 생성)
+
+2. 새로운 user 생성
+   -- user 및 비밀번호 생성
+   create user javauser@localhost identified by 'pwmyuser';
+
+   -- 권한 부여
+   grant all privileges on *.* to javauser@localhost;
+
+   -- 비밀번호 변경
+   alter user javauser@localhost identified by 'pwjavauser';
+
+3. UI 에 javauser 생성
+  +클릭> user: javauser, pw:pwmyuser
+ 
+3. javauser에 접속하여 데이터베이스 생성
+  create database mydb;

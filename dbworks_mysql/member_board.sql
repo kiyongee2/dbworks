@@ -24,7 +24,7 @@ create table t_board(
     constraint fk_member_board foreign key (memberid)
     references t_member(memberid) on delete cascade
 );
-alter table t_board add reply_count int DEFAULT '0';
+alter table board add reply_count int DEFAULT '0';
 
 -- 댓글 테이블
 create table t_reply(
@@ -44,7 +44,7 @@ values ('cloud', 'm123456#', '김기용', '남자');
 
 -- 게시글 추가
 insert into t_board (title, content, memberid)
-values ('제목입니다', '글 내용입니다.', 'ansan');
+values ('제목입니다.', '글 내용입니다.', 'ansan');
 
 -- 댓글 추가
 insert into t_reply(bnum, rcontent, replyer)
@@ -76,18 +76,10 @@ select * from t_board limit 0, 5;
 select * from t_board order by bnum desc limit 3, 10;
 
 -- 댓글 수 업데이트
-select * from t_reply;
-select count(rno) from t_reply where bnum=3;
+select count(*) from t_reply;
 
-select count(rno) from t_reply, t_board 
-where t_board.bnum = t_reply.bnum;
-
-update t_board
-set reply_count = 
-	(
-	  select count(rno) from t_reply, t_board 
-      where t_board.bnum = t_reply.bnum
-	);
+-- update board b
+-- set b.reply_count = 
 
 
 

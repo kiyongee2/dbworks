@@ -1,0 +1,17 @@
+1. oracle 접속화면 system DB 생성
++ 클릭> user: system, 비번:pw1234
+
+  -- c##을 붙이지 않도록 설정
+  ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+  -- javauser 및 비밀번호 생성
+  CREATE USER javauser IDENTIFIED BY pwjavauser;
+
+  -- 권한 부여
+  GRANT CONNECT, RESOURCE, DBA TO javauser;
+
+  -- 비밀번호 변경
+  ALTER USER javauser IDENTIFIED BY pwmydb2;
+
+2. oracle 접속화면 javauser 생성
++ 클릭>  user: javauser, 비밀번호:pwjavauser

@@ -1,0 +1,4 @@
+
+CREATE USER c##mydb IDENTIFIED BY pwmydb;
+
+GRANT CONNECT, DBA, RESOURCE TO c##mydb;
